@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StyleButtonROunded">
+        <item name="background">@drawable/btn_for_auto</item>
+        <item name="colorButtonNormal">@color/grey_new</item>
+    </style>
+</resources>
