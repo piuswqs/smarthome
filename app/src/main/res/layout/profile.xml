@@ -23,7 +23,7 @@
             >
 
             <ImageView
-                android:src="@drawable/btnBack"
+                android:src="@drawable/btn_back"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_margin="10dp"

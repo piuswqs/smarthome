@@ -1,55 +1,72 @@
 package com.example.smarthouse
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.smarthouse.databinding.ActivityMainBinding
+import androidx.core.content.ContextCompat
+import com.example.smarthouse.databinding.CreatingPincodeBinding
 
-class CreatingPinCodeClass: AppCompatActivity() {
-    var txt: TextView? = null
+class CreatingPinCodeClass : AppCompatActivity() {
+
     var pas: MutableList<String>? = null
+    var txt: String? = null
 
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding: CreatingPincodeBinding
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.creating_pincode)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = CreatingPincodeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         var sharedPref = getSharedPreferences("myPref", MODE_PRIVATE)
         var editor = sharedPref.edit()
 
-        
+        listOf(
+            binding.btnCPnubmer1,
+            binding.btnCPnubmer2,
+            binding.btnCPnubmer3,
+            binding.btnCPnubmer4,
+            binding.btnCPnubmer5,
+            binding.btnCPnubmer6,
+            binding.btnCPnubmer7,
+            binding.btnCPnubmer8,
+            binding.btnCPnubmer9
+        ).forEach {
+            it.setOnClickListener(::onClick)
+        }
 
-        val btn1 = findViewById<TextView>(R.id.btnCPnubmer1)
-        val btn2 = findViewById<TextView>(R.id.btnCPnubmer2)
-        val btn3 = findViewById<TextView>(R.id.btnCPnubmer3)
-        val btn4 = findViewById<TextView>(R.id.btnCPnubmer4)
-        val btn5= findViewById<TextView>(R.id.btnCPnubmer5)
-        val btn6 = findViewById<TextView>(R.id.btnCPnubmer6)
-        val btn7= findViewById<TextView>(R.id.btnCPnubmer7)
-        val btn8= findViewById<TextView>(R.id.btnCPnubmer8)
-        val btn9 = findViewById<TextView>(R.id.btnCPnubmer9)
     }
-    fun onClick(view: View?){
-        val button = view as Button
-        pas?.add(button.text.toString())
-        txt?.text = pas.toString()
-        if (pas!!.size == 1) {
+// попробовать через свитч кейс
+    fun onClick(view: View?) {
+        val btn = view as TextView
+        pas?.add(btn.text.toString())
+        txt += btn.text.toString()
 
+        if (pas?.size == 1) {
+            binding.rb1?.setBackgroundColor(Color.WHITE)
+            Toast.makeText(applicationContext, txt.toString(), Toast.LENGTH_SHORT).show()
         }
-        if (pas!!.size == 2) {
-
+        if (pas?.size == 2) {
+            binding.rb2?.setBackgroundColor(Color.WHITE)
+            Toast.makeText(applicationContext, txt.toString(), Toast.LENGTH_SHORT).show()
         }
-        if (pas!!.size == 3) {
-
+        if (pas?.size == 3) {
+            binding.rb3?.setBackgroundColor(Color.WHITE)
+            Toast.makeText(applicationContext, btn.text.toString(), Toast.LENGTH_SHORT).show()
         }
-        if (pas!!.size == 4) {
-
+        if (pas?.size == 4) {
+            binding.rb4?.setBackgroundColor(Color.WHITE)
+            Toast.makeText(applicationContext, btn.text.toString(), Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, EnterAddressActivity::class.java)
+            startActivity(intent)
         }
     }
 }
