@@ -1,88 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:background="@color/white">
 
 
     <LinearLayout
         android:id="@+id/linurhome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="#2A2A37"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        >
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
 
             <TextView
-                android:text="Твой дом"
-                android:fontFamily="@font/montserrat_bold"
-                android:textColor="@color/white"
-                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
-                />
-            <TextView
-                android:text="г. Омск, ул. Ленина, д. 24"
-                android:textColor="@color/grey_new"
                 android:fontFamily="@font/montserrat_bold"
+                android:text="Твой дом"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                />
-            <TextView
-                android:text="Комнаты"
-                android:textColor="@color/white"
-                android:textSize="18sp"
                 android:fontFamily="@font/montserrat_bold"
+                android:text="г. Омск, ул. Ленина, д. 24"
+                android:textColor="@color/grey_new" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                />
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Комнаты"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
-            </LinearLayout>
+        </LinearLayout>
 
-            <View
-                android:layout_width="150dp"
-                android:layout_height="5dp"
-                android:background="#0B509F"
-            />
+        <View
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:background="#0B509F" />
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/settings"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:src="@drawable/btn_settings"
         android:layout_margin="13dp"
+        android:src="@drawable/btn_settings"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listMainScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linurhome"
-        ></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/linurhome"></androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/btn_add"
         android:layout_margin="22dp"
+        android:src="@drawable/btn_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

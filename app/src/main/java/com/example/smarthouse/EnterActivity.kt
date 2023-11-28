@@ -1,34 +1,28 @@
 package com.example.smarthouse
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.example.smarthouse.databinding.CreatingPincodeBinding
+import com.example.smarthouse.databinding.EnterScreenBinding
+import com.example.smarthouse.databinding.RegistrationBinding
 
-class CreatingPinCodeClass : AppCompatActivity() {
-
+class EnterActivity : AppCompatActivity() {
     var pas: MutableList<String>? = null
     var txt: String? = ""
 
-    lateinit var binding: CreatingPincodeBinding
+    lateinit var binding: EnterScreenBinding
+
     lateinit var sharedPref: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        txt = ""
-        binding = CreatingPincodeBinding.inflate(layoutInflater)
+        binding = EnterScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         sharedPref = getSharedPreferences("myPref", MODE_PRIVATE)
         editor = sharedPref.edit()
 
@@ -53,7 +47,7 @@ class CreatingPinCodeClass : AppCompatActivity() {
         pas?.add(btn.text.toString())
         txt += btn.text.toString()
 
-        if (txt?.length == 1) {
+         if (txt?.length == 1) {
             binding.rb1?.setBackgroundDrawable(getDrawable(R.drawable.radio_btn_white))
         }
         if (txt?.length == 2) {
@@ -65,18 +59,20 @@ class CreatingPinCodeClass : AppCompatActivity() {
         if (txt?.length == 4) {
             binding.rb4?.setBackgroundDrawable(getDrawable(R.drawable.radio_btn_white))
 
-            binding.apply {
-                val pincodeTxt = txt.toString()
-                val hasVisited = true
-                editor.apply{
-                    putString("pincode", pincodeTxt)
-                    putBoolean("hasvisited_CreatingPinCode", hasVisited)
-                    apply()
-                }
+            val pincodeTxt = txt.toString()
+            val pincodeResult = sharedPref.getString("pincode", null)
+            if (pincodeTxt.equals(pincodeResult)) {
+                var intent = Intent(binding.root.context, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                txt = ""
+                binding.rb1?.setBackgroundDrawable(getDrawable(R.drawable.radio_btn))
+                binding.rb2?.setBackgroundDrawable(getDrawable(R.drawable.radio_btn))
+                binding.rb3?.setBackgroundDrawable(getDrawable(R.drawable.radio_btn))
+                binding.rb4?.setBackgroundDrawable(getDrawable(R.drawable.radio_btn))
+                Toast.makeText(binding.root.context, "Пинкод неправильный.\n Попробуйте снова", Toast.LENGTH_SHORT).show()
             }
-            val intent = Intent(binding.root.context, EnterAddressActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 }

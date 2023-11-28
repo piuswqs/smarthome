@@ -59,6 +59,7 @@
             android:fontFamily="@font/montserrat_bold"
             />
         <EditText
+            android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -70,6 +71,7 @@
             android:fontFamily="@font/montserrat_bold"
             />
         <EditText
+            android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -80,6 +82,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"/>
         <EditText
+            android:id="@+id/editPassword"
+            android:inputType="numberPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -92,6 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
+            android:id="@+id/btnRegistrationReg"
             android:layout_margin="30dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -101,6 +106,7 @@
             android:backgroundTint="@color/auto_btnEnter"
             />
         <Button
+            android:id="@+id/btnAutorizationReg"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"

@@ -3,16 +3,22 @@ package com.example.smarthouse
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.smarthouse.databinding.MainScreenBinding
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: MainScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.enter_adress)
+        binding = MainScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val intent = Intent(applicationContext, CreatingPinCodeClass::class.java)
-        startActivity(intent)
+        binding.settings.setOnClickListener {
+            var intent = Intent(binding.root.context, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun getClient() {
